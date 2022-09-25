@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,user_passes_test
 from tower_api import models
 from django.db.models import Sum
+from datetime import date
 
 
 
@@ -24,6 +25,12 @@ def admindashboard(request):
     clasescount=models.Clss.objects.all().count()
     teachercount=models.Teacher.objects.all().filter(is_active=True).count()
 
+    lesson = models.Lesson.objects.all()
+    # teacher = models.Teacher.objects.all()
+    salary = models.Salary.objects.all()
+    today = date.today()
+
+
     # pendingteachercount=models.Teacher.objects.all().filter(status=False).count()
 
     studentcount=models.Student.objects.all().filter(is_active=True).count()
@@ -42,6 +49,10 @@ def admindashboard(request):
         'coursescount':coursescount,
         'clasescount':clasescount,
         'teachercount':teachercount,
+        'lesson': lesson,
+        # 'teacher': teacher,
+        'salary': salary,
+        'today': today,
 
         # 'pendingteachercount':pendingteachercount,
 

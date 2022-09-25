@@ -112,7 +112,7 @@
         
 
     <div class="row mt-4">
-        <div class="col-6">
+        <div class="col-4">
             <div class="card mb-4 ">
                 <div class="d-flex">
                     <div class="icon icon-shape icon-lg bg-gradient-success shadow text-center border-radius-xl mt-n3 ms-4">
@@ -120,7 +120,10 @@
                 </div>
                 <h6 class="mt-3 mb-2 ms-3 ">Incoming Lessons</h6>
             </div>
+            
             <div class="card-body p-3">
+                {% for les in lesson %}
+                    {% if les.event.day >= today %}
                 <div class="row">
                     <div class="col-lg-12 col-md-7">
                         <div class="table-responsive">
@@ -134,32 +137,32 @@
                                                 </div>
                                                 <div class="ms-4">
                                                     <p class="text-xs font-weight-bold mb-0 ">Course:</p>
-                                                    <h6 class="text-sm font-weight-normal mb-0 ">ST 2022/4</h6>
+                                                    <h6 class="text-sm font-weight-normal mb-0 ">{{les.clss.course}} {{les.clss.period}}</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="text-center">
                                                 <p class="text-xs font-weight-bold mb-0 ">Class:</p>
-                                                <h6 class="text-sm font-weight-normal mb-0 ">S01</h6>
+                                                <h6 class="text-sm font-weight-normal mb-0 ">{{les.clss.clss}}</h6>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="text-center">
                                                 <p class="text-xs font-weight-bold mb-0 ">Teacher:</p>
-                                                <h6 class="text-sm font-weight-normal mb-0 ">Mr. John</h6>
+                                                <h6 class="text-sm font-weight-normal mb-0 ">{{les.teacher}}</h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-sm">
                                             <div class="col text-center">
                                                 <p class="text-xs font-weight-bold mb-0 ">Date:</p>
-                                                <h6 class="text-sm font-weight-normal mb-0 ">20/09/2022</h6>
+                                                <h6 class="text-sm font-weight-normal mb-0 ">{{les.event.day}}</h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-sm">
                                             <div class="col text-center">
                                                 <p class="text-xs font-weight-bold mb-0 ">Time:</p>
-                                                <h6 class="text-sm font-weight-normal mb-0 ">18:30</h6>
+                                                <h6 class="text-sm font-weight-normal mb-0 ">{{les.event.hour}}</h6>
                                             </div>
                                         </td>
                                         <td class="align-middle text-sm">
@@ -180,19 +183,24 @@
                         </div>
                     </div>
                 </div>
+                    {% endif%}
+                {% endfor %}
             </div>
         </div>
     </div>
-    <div class="col-6">
+
+    <div class="col-4">
         <div class="card mb-4 ">
             <div class="d-flex">
                 <div class="icon icon-shape icon-lg bg-gradient-success shadow text-center border-radius-xl mt-n3 ms-4">
                     <i class="material-icons opacity-10" aria-hidden="true">price_change</i>
+                </div>
+                <h6 class="mt-3 mb-2 ms-3 ">Incoming Salaries</h6>
             </div>
-            <h6 class="mt-3 mb-2 ms-3 ">Pending Payments</h6>
-        </div>
-        <div class="card-body p-3">
-            <div class="row">
+            <div class="card-body p-3">
+                <div class="row">
+                {% for sal in salary %}
+                    {% if sal.due_date >= today %}
                 <div class="col-lg-12 col-md-7">
                     <div class="table-responsive">
                         <table class="table align-items-center ">
@@ -204,27 +212,27 @@
                                                 <span class="material-icons" style="color: blue; font-size:xx-large"><span class="material-icons"><span class="material-icons">receipt</span></span></span>
                                             </div>
                                             <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0 ">Account:</p>
-                                                <h6 class="text-sm font-weight-normal mb-0 ">Alice Clay</h6>
+                                                <p class="text-xs font-weight-bold mb-0 ">Teacher:</p>
+                                                <h6 class="text-sm font-weight-normal mb-0 ">{{sal.teacher}}</h6>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0 ">Amount:</p>
-                                            <h6 class="text-sm font-weight-normal mb-0 ">$2500</h6>
+                                            <h6 class="text-sm font-weight-normal mb-0 ">${{sal.teacher.salary}}</h6>
                                         </div>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0 ">Category:</p>
                                             <h6 class="text-sm font-weight-normal mb-0 ">Salary</h6>
                                         </div>
-                                    </td>
+                                    </td> -->
                                     <td class="align-middle text-sm">
                                         <div class="col text-center">
                                             <p class="text-xs font-weight-bold mb-0 ">Due Date:</p>
-                                            <h6 class="text-sm font-weight-normal mb-0 ">30/09/2022</h6>
+                                            <h6 class="text-sm font-weight-normal mb-0 ">{{sal.due_date}}</h6>
                                         </div>
                                     </td>
                                     <td class="align-middle text-sm">
@@ -243,6 +251,8 @@
                             </tbody>
                         </table>
                     </div>
+                    {% endif%}
+                {% endfor %}
                 </div>
             </div>
         </div>
