@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tower_api',
+    'towerweb',
+    'widget_tweaks',
     'rest_framework',
 
 ]
