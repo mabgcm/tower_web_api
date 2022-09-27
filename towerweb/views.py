@@ -11,6 +11,9 @@ from datetime import date
 def home(request):
     return render(request, 'towerweb/home.html')
 
+def courses(request):
+    return render(request, 'towerweb/courses.html')
+
 def user_login(request):
     login(request)
     return render(request, 'towerweb/adminlogin.html')

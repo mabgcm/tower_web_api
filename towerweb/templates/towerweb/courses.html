@@ -1,0 +1,137 @@
+{% extends 'towerweb/adminsidebar.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="container-fluid ">    
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="card  mb-5">
+                <div class="card-header p-3 pt-2">
+                    <div class="icon icon-lg icon-shape bg-info shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
+                        <img src="{% static 'towerweb/img/monkey.svg' %}" style="height: 65px;" alt="monkey">
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-lg mb-0 text-capitalize"> <strong>STARTERS</strong></p>
+                    <h4 class="mb-0">2</h4>
+                </div>
+                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Add a period</span></p>
+            </div>    
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <div class="row">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 align-items-center">
+                                        <div >
+                                            <p>Period - Sts:</p>
+                                            <h6>22/4 - 46sts</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>    
+           
+    </div>
+        <div class="col-lg-2">
+            <div class="card  mb-5">
+                <div class="card-header p-3 pt-2">
+                    <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary shadow text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">recent_actors</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-lg mb-0 text-capitalize">Classes</p>
+                    <h4 class="mb-0">{{clasescount}}</h4>
+                </div>
+            </div>    
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p> -->
+            </div>
+        </div>    
+            
+    </div>
+        <div class="col-lg-2">
+            <div class="card  mb-5">
+                <div class="card-header p-3 pt-2">
+                    <div class="icon icon-lg icon-shape bg-gradient-danger shadow-danger shadow text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">person</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-lg mb-0 text-capitalize">Teachers</p>
+                    <h4 class="mb-0">{{teachercount}}</h4>
+                </div>
+            </div>    
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p> -->
+            </div>
+        </div>    
+           
+    </div>
+        <div class="col-lg-2">
+            <div class="card  mb-5">
+                <div class="card-header p-3 pt-2">
+                    <div class="icon icon-lg icon-shape bg-gradient-warning shadow-warning shadow text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">people_alt</i>
+                </div>
+                <div class="text-end pt-1">
+                    <p class="text-lg mb-0 text-capitalize">Students</p>
+                    <h4 class="mb-0">{{studentcount}}</h4>
+                </div>
+            </div>    
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p> -->
+            </div>
+        </div>    
+            
+    </div>
+          <div class="col-lg-2">
+            <div class="card  mb-5">
+      <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+          <i class="material-icons opacity-10">payments</i>
+        </div>
+        <div class="text-end pt-1">
+          <p class="text-lg mb-0 text-capitalize">Salaries</p>
+          <h4 class="mb-0"><span>${{teachersalary}}</span></h4>
+        </div>
+      </div>
+    
+      <hr class="dark horizontal my-0">
+      <div class="card-footer p-3">
+        <!-- <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p> -->
+      </div>
+    </div>
+    
+    
+    
+          </div>
+          <div class="col-lg-2 mt-sm-0 mt-4">
+            <div class="card  mb-5">
+      <div class="card-header p-3 pt-2 bg-transparent">
+        <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">payment</i>
+        </div>
+        <div class="text-end pt-1">
+            <p class="text-lg mb-0 text-capitalize ">Fees</p>
+            <h4 class="mb-0 ">${{studentfee}}</h4>
+        </div>
+      </div>
+    
+      <hr class="horizontal my-0 dark">
+      <div class="card-footer p-3">
+        <!-- <p class="mb-0 "><span class="text-success text-sm font-weight-bolder">+1% </span>than yesterday</p> -->
+      </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
