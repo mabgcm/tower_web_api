@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'towerweb',
     'widget_tweaks',
     'rest_framework',
+    'crispy_forms',
+    'bootstrap4',
 
 ]
 

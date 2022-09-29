@@ -1,0 +1,101 @@
+{% extends 'towerweb/adminsidebar.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="container-fluid mx-auto col-lg-6">    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card  mb-5">
+                <div class="card-header p-3 pt-2">
+                    <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary shadow text-center border-radius-xl mt-n4 position-absolute">
+                    <i class="material-icons opacity-10">recent_actors</i>
+                </div>
+                <div class="text-end pt-1">
+                    <h6 class="text-lg mb-0 text-capitalize"> <strong>STARTERS</strong></h6>
+                    <h5 class="mb-0 text-info">{{classescount}} classes</h5>
+                </div>
+                <a href="{% url 'addclass'  %}"><p class="mb-0"><span class="text-success text-sm font-weight-bolder">Add a class</span></p></a>
+                
+            </div>    
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+                <div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-7">
+                            <div class="table-responsive">
+                                <table class="table centered align-items-center text-center">
+                                    <thead>
+                                        <tr class="table-centered">
+                                            <th>Course:</th>
+                                            <th>Period:</th>
+                                            <th>Class:</th>
+                                            <th>Students:</th>
+                                            <th>Edit:</th>
+                                            <th>Delete:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr >
+                                            <td class="w-30 centered text-center">
+                                                <div class="d-flex px-1 py-1">
+                                                    <div class="col px-3">
+                                                        {% for cls in clss %}
+                                                        <p class="text-dark">{{cls.course}}</p>                                                        
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="w-30 centered text-center">
+                                                <div class="d-flex px-1 py-1">
+                                                    <div class="col px-3">
+                                                        {% for cls in clss %}
+                                                        <p class="text-dark">{{cls.period}}</p>
+                                                        
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="w-30 centered text-center">
+                                                <div class="d-flex px-1 py-1">
+                                                    <div class="col px-3">
+                                                        {% for cls in clss %}
+                                                        <a href="{% url 'updateclass' cls.id  %}"><p class="text-dark" style="text-decoration:underline;">{{cls.clss}}</p></a>
+                                                        
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col">
+                                                    {% for sts in st_cls %}
+                                                    <p>{{sts.nstud}}</p>
+                                                    {% endfor %}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {% for cls in clss %}
+                                                <div class="col">
+                                                    <a href="{% url 'updateclass' cls.id  %}"><span class="material-icons" style="color: orange; font-size:large"><span class="material-icons"><span class="material-icons">edit</span></span></span></a>
+                                                </div>
+                                                {% endfor %}
+                                            </td>
+                                            <td>
+                                                <div class="col">
+                                                    <a href="/"><span class="material-icons" style="color: red; font-size:large"><span class="material-icons"><span class="material-icons">delete</span></span></span></a>
+                                                </div>
+                                            </td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>          
+    </div>         
+</div>
+
+
+
+{% endblock content %}

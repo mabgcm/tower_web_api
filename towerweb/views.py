@@ -3,16 +3,36 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required,user_passes_test
 from tower_api import models
-from django.db.models import Sum
+from tower_api.models import Clss
+from django.db.models import Sum, Count
 from datetime import date
-
+from .forms import PeriodForm, ClassForm
 
 
 def home(request):
     return render(request, 'towerweb/home.html')
 
 def courses(request):
-    return render(request, 'towerweb/courses.html')
+    stperiodscount=models.Period.objects.all().filter(course_id=1).count()
+    period = models.Period.objects.all().filter(course_id=1)
+    st_period = models.Period.objects.annotate(nstud=Count('students'))
+    mydict = {
+        'stperiodscount': stperiodscount,
+        'period': period,
+        'st_period': st_period,
+    }
+    return render(request, 'towerweb/courses.html', context=mydict)
+
+def classes(request):
+    classescount=models.Period.objects.all().count()
+    clss = models.Clss.objects.all()
+    st_cls = models.Clss.objects.annotate(nstud=Count('students'))
+    mydict = {
+        'classescount': classescount,
+        'clss': clss,
+        'st_cls': st_cls,
+    }
+    return render(request, 'towerweb/classes.html', context=mydict)
 
 def user_login(request):
     login(request)
@@ -86,3 +106,39 @@ def user_login(request):
         return redirect('admindashboard')
     return render(request, 'towerweb/adminlogin.html', {'form':form})    
 
+def add_period(request):
+    form = PeriodForm()
+    if request.method == 'POST':
+        form = PeriodForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('courses')
+    context = {
+        'form': form
+    }
+    return render(request, 'towerweb/addperiod.html', context)
+
+def add_class(request):
+    form = ClassForm()
+    if request.method == 'POST':
+        form = ClassForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('classes')
+    context = {
+        'form': form
+    }
+    return render(request, 'towerweb/addclass.html', context)
+
+def update_class(request, id):
+    clss = Clss.objects.get(id=id)
+    form = ClassForm(instance=clss)
+    if request.method =='POST':
+        form = ClassForm(request.POST, instance=clss)
+        if form.is_valid():
+            form.save()
+            return redirect('classes')
+    context = {
+        'form': form,
+    }
+    return render(request, 'towerweb/updateclass.html', context)

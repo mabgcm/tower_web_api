@@ -2,16 +2,17 @@
 
 {% block content %}
 
-<div class="container-fluid ">    
-    <div class="row">
+<div class="container-fluid mt-5">    
+    <div class="row mt-5">
         <div class="col-lg-2">
             <div class="card  mb-5">
                 <div class="card-header p-3 pt-2">
-                    <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">book</i>
+                    <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary shadow text-center border-radius-xl mt-n4 position-absolute">
+                        <a href="{% url 'courses'  %}"><i class="material-icons opacity-10">book</i></a>
+                    <!-- <i class="material-icons opacity-10">book</i> -->
                 </div>
                 <div class="text-end pt-1">
-                    <p class="text-lg mb-0 text-capitalize">Courses</p>
+                    <a href="{% url 'courses'  %}"><p class="text-lg mb-0 text-capitalize">Courses</p></a>
                     <h4 class="mb-0">{{coursescount}}</h4>
                 </div>
             </div>    
@@ -44,11 +45,12 @@
             <div class="card  mb-5">
                 <div class="card-header p-3 pt-2">
                     <div class="icon icon-lg icon-shape bg-gradient-danger shadow-danger shadow text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">person</i>
+                        <a href="{% url 'classes'  %}"><i class="material-icons opacity-10">person</i></a>
                 </div>
                 <div class="text-end pt-1">
-                    <p class="text-lg mb-0 text-capitalize">Teachers</p>
-                    <h4 class="mb-0">{{teachercount}}</h4>
+                    <a href="{% url 'classes'  %}"><p class="text-lg mb-0 text-capitalize">Teachers</p></a>
+                    
+                    <h4 class="mb-0">2</h4>
                 </div>
             </div>    
             <hr class="dark horizontal my-0">
